@@ -1,3 +1,15 @@
 chloeW -- 2025-3-24 21:45
 - Linked submodule and registered team
 - Added team flag and set up readme
+
+chloeW, brianL, kishiW, raymondL -- 2025-3-26 22:27
+- Brainstormed potential projects
+- Finalized project idea and plan
+- Finished v0 of design doc
+
+chloeW, brianL -- 2025-3-31 13:09
+- Clarified our goal in demonstrating the correlation between presidential approval ratings and CPI
+- Identified types of graphs we plan to implement (i.e., line graph and scatter plot)
+- Added plan for discussion board where users can post their own interpretations of data
+- Added plan for profile where users can change their preferences for presidents or time periods
+- Further detailed task breakdown
