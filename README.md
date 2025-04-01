@@ -14,8 +14,6 @@ We will visualize data on both monthly presidential approval ratings and consume
 - Raymond Lin - Flask App/Database
   - Connect database to frontend through Flask
 
-## Install Guide
-No install guide necessary for the website.
+## Install Guide (TBD)
 
-## Launch Codes
-Just go to the website. It is hosted on our droplet. 
+## Launch Codes (TBD)
