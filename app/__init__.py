@@ -1,16 +1,16 @@
-# 
-# Unbasic Jeans
+# Unbasic Jeans: Chloe Wong, Brian Liu, Raymond Lin, Kishi Wijaya
 # SoftDev
 # P04: 
-# 
+# 2025-XX-XX
+# Time Spent: 
 
 # Imports
 from flask import Flask, request, render_template, redirect, url_for, flash, session
 import os
-from databases import 
+import databases as db 
 
 
-init_db()
+db.init_db()
 
 # Secret key/setup
 app = Flask(__name__)
@@ -19,7 +19,6 @@ app.secret_key = os.urandom(32)
 # Homepage
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    #print("\n\nget_all_favorites:",get_all_favorites())
     if 'username' not in session:
         return render_template('home.html')
     return render_template('home.html', username = session['username'])
@@ -28,19 +27,19 @@ def home():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        return create_user()
+        return db.create_user()
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method=='POST':
-        return login_user()
+        return db.login_user()
     return render_template('login.html')
 
 @app.route('/logout')
 def logout():
     if 'username' in session:
-        return logout_user()
+        return db.logout_user()
     return redirect('/')
 
 
