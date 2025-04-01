@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cookie&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/home.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <div id="background">
+        <br>
+        {% if username %}
+        <div id="name">
+            Hello, {{ username }} !
+            <a id="link" href="{{ url_for('logout') }}">Log out</a><br>
+            Visit your
+            <a id="link" href="{{ url_for('profile') }}"> Profile</a>
+        </div>
+        {% else %}
+        <div id="buttons">
+            <a id=login href="{{ url_for('login') }}">Log in</a>
+            <a id=register href="{{ url_for('register') }}">Register</a><br>
+        </div>
+        {% endif %}
+
+        <h1 id="title">Somni Bites</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p id="flashes">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    </div>
+
+    <div id="cata">
+        View our
+        <a id=link href="{{ url_for('catalog') }}"> Catalog </a>
+        of recipes!
+    </div>
+
+    <div id="new">
+        Can't choose what to try? Read some
+        <a id=link href="{{ url_for('news') }}"> News</a>
+        articles!
+    </div>
+
+    <div id="brew">
+
+        Visit the
+        <a id=link href="{{ url_for('brewery') }}"> Brewery</a>
+        to find breweries near you!
+    </div>
+
+</body>
+
+</html>
