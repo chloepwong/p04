@@ -15,11 +15,7 @@ We will visualize data on both monthly presidential approval ratings and consume
   - Connect database to frontend through Flask
 
 ## Install Guide
-###Prerequisites
-- Ensure that you have both Git and Python installed on your machine before running this website. You can refer to these two documents to ensure that you have both Git and Python. 
-1. For installing Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-2. For installing Python: https://novillo-cs.github.io/apcsa/tools/
+No install guide necessary for the website.
 
-### Cloning the Project 
-1. 
 ## Launch Codes
+Just go to the website. It is hosted on our droplet. 
