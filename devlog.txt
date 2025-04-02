@@ -14,8 +14,8 @@ chloeW, brianL -- 2025-3-31 13:09
 - Added plan for profile where users can change their preferences for presidents or time periods
 - Further detailed task breakdown
 
-chloeW, brianL, kishiW, raymondL -- 2025-4-1 23:51
+chloeW, brianL, kishiW, raymondL -- 2025-4-1 23:54
 - Added project description to README
 - Enumerated required packages
-- Repurposed code from previous projects to create a working app (CSS to be revised)
+- Repurposed code from a previous project to create a working app with functioning login, registration, and logout (CSS to be revised)
 - Added .gitignore
