@@ -9,7 +9,6 @@ from flask import Flask, request, render_template, redirect, url_for, flash, ses
 import os
 import databases as db 
 
-
 db.init_db()
 
 # Secret key/setup
@@ -42,6 +41,24 @@ def logout():
         return db.logout_user()
     return redirect('/')
 
+@app.route('/graphs')
+def graphs():
+    return render_template('graphs.html')
+
+@app.route("/write", methods=['GET', 'POST'])
+def write():
+    if session.get("username") == None:
+        return redirect(url_for("login"))
+    if request.method=="POST":
+        comment = request.form.get("comment")
+        commentid = db.addComment(session.get("username"), comment)[0]
+        return redirect("/comment/" + str(commentid))
+    username = session.get("username")
+    return render_template("write.html", username=username)
+
+@app.route('/error')
+def error(message):
+    return render_template('error.html', error = message)
 
 # Run
 if __name__ == "__main__":
