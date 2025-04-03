@@ -33,7 +33,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS cpi (
             date TEXT NOT NULL,
             cpi FLOAT NOT NULL,
-            change FLOAT NOT NULL,
+            change FLOAT NOT NULL
         )
     ''')
 
@@ -167,7 +167,7 @@ cpibase()
 #         print('Database Error')
 
 
-# User
+User
 def register_user():
     username = request.form.get('username')
     password = request.form.get('password')
@@ -179,10 +179,9 @@ def register_user():
         flash('passwords dont match')
     else:
         try:
-            with sqlite3.connect('magnolia.db') as conn:
+            with sqlite3.connect('p04.db') as conn:
                 cursor = conn.cursor()
                 cursor.execute('INSERT INTO users (username, password) VALUES (?,?)', (username, password))
-                cursor.execute('INSERT INTO stats (user, magicpower, flowerscore, day) VALUES (?,?,?,?)', (username, 1, 1, 1))
                 conn.commit()
                 flash('registered')
         except sqlite3.IntegrityError:
@@ -197,7 +196,7 @@ def login_user():
         flash('fill all fields')
         return redirect('/login')
     else:
-        with sqlite3.connect('magnolia.db') as conn:
+        with sqlite3.connect('p04.db') as conn:
             cursor = conn.cursor()
             cursor.execute('SELECT password FROM users WHERE username = ?', (username,))
             user_pass = cursor.fetchone()
