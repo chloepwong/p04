@@ -11,21 +11,107 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 # Setup
+import sqlite3, os, csv
+from flask import Flask, request, render_template, redirect, url_for, flash, session
+
+
+app = Flask(__name__)
+app.secret_key = os.urandom(32)
+
+# database initialization
 def init_db():
     """initialize db if none exists"""
-    if not os.path.exists('user_info.db'):
-        conn = sqlite3.connect('user_info.db')
-        cursor = conn.cursor()
-        # User table
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL
-            )
-        ''')
-        conn.commit()
-        conn.close()
+    conn = sqlite3.connect('p04.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+
+# id -> User ID      username -> username        password -> password
+
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS cpi (
+            date TEXT NOT NULL,
+            cpi FLOAT NOT NULL,
+            change FLOAT NOT NULL
+        )
+    ''')
+
+
+# date -> date   cpi -> consumer price index   change -> change in CPI from previous month
+
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS approval (
+            President TEXT NOT NULL,
+            date TEXT NOT NULL,
+            positive FLOAT NOT NULL,
+            negative FLOAT NOT NULL,
+            days INT NOT NULL
+        )
+    ''')
+
+
+# president -> President  date -> date  positive/negative -> # of (pos/neg) ratings  days -> days since inauguration
+
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS correlation (
+            date TEXT NOT NULL,
+            President TEXT NOT NULL,
+            cpi FLOAT NOT NULL,
+            change FLOAT NOT NULL,  
+            percent FLOAT NOT NULL
+        )
+    ''')
+    
+# date -> date   president -> President  cpi -> consumer price index   change -> change in CPI from previous month   percent -> percent of positive ratings
+
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS comments (
+            username TEXT NOT NULL,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            comment TEXT NOT NULL
+        )
+    ''')
+
+# username -> username   id -> COMMENT ID    comment -> comment text 
+
+
+    conn.commit()
+    conn.close()
+
+def database_connect():
+    if not os.path.exists('p04.db'):
+        init_db()
+    conn = sqlite3.connect('p04.db')
+    return conn
+
+def cpibase():
+    if not os.path.exists('p04.db'):
+        print("wa")
+        try:
+            conn = database_connect()
+            with open('cpiai_csv.csv') as csvfile:
+                readn = csv.reader(csvfile)
+                cursor = conn.cursor()
+                for info in readn:
+                    datex = info[0]
+                    cpix = info[1]
+                    changex = info[2]
+                    cursor.execute('INSERT INTO cpi (date, cpi, change) VALUES (?, ?, ?)', (datex, cpix, changex))
+                conn.commit()
+        except sqlite3.IntegrityError:
+            flash('Database Error')
+    else:
+        print("database exists")
 
 def login_user():
     username = request.form.get('username')
@@ -36,7 +122,7 @@ def login_user():
         flash('Please fill out all fields.')
         return redirect('/login')
 
-    with sqlite3.connect('user_info.db') as conn:
+    with sqlite3.connect('p04.db') as conn:
         cursor = conn.cursor()
         cursor.execute('SELECT password FROM users WHERE username = ?', (username,))
         users_pass = cursor.fetchone()
@@ -64,7 +150,7 @@ def create_user():
 
     else:
         try:
-            with sqlite3.connect('user_info.db') as conn:
+            with sqlite3.connect('p04.db') as conn:
                 cursor = conn.cursor()
                 cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
                 conn.commit()
