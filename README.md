@@ -14,6 +14,29 @@ We will visualize data on both monthly presidential approval ratings and consume
 - Raymond Lin - Flask App/Database
   - Connect database to frontend through Flask
 
-## Install Guide (TBD)
-
-## Launch Codes (TBD)
+## Install Guide
+Currently, our project can be installed by carrying out the following steps. This guide will be updated once we deploy our Flask app on DigitalOcean.
+1. Clone and move into this repository
+```
+$ git clone git@github.com:sasha-school/p02-GarfieldsCatHair.git
+```
+```
+$ cd p02-GarfieldsCatHair
+```
+2. Create a virtual environment
+```
+$ python3 -m venv foo
+```
+3. Activate the virtual environment: Linux/MacOS
+```
+$ . foo/bin/activate
+```
+3. Activate the virtual environment: Windows
+```
+$ foo\Scripts\activate
+```
+4. Install required packages
+```
+$ pip install -r requirements.txt
+```
+## Launch Codes (TBA)
