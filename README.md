@@ -15,10 +15,10 @@ We will visualize data on both monthly presidential approval ratings and consume
   - Connect database to frontend through Flask
 
 ## Install Guide
-Currently, our project can be installed by carrying out the following steps. This guide will be updated once we deploy our Flask app on DigitalOcean.
+Our project can be installed locally by carrying out the following steps. Users may also skip installation and go straight to the website at the bottom of our Launch Codes.
 1. Clone and move into this repository
 ```
-$ git clone git@github.com:sasha-school/p02-GarfieldsCatHair.git
+$ git clone git@github.com:chloepwong/p04.git
 ```
 ```
 $ cd p02-GarfieldsCatHair
