@@ -22,4 +22,11 @@ chloeW, brianL, kishiW, raymondL -- 2025-4-1 23:54
 
 chloeW -- 2025-4-3 2:42
 - Added temporary install guide
-- Attempted (but failed) to deploy Flask app on DigitalOcean
+- Attempted (but failed) to deploy Flask app on droplet
+
+chloeW, brianL -- 2025-4-4 11:01
+- Deployed Flask app on droplet
+
+chloeW -- 2025-4-6 19:45
+- Fixed minor errors in install guide
+- Added launch codes
