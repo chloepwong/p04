@@ -15,13 +15,13 @@ We will visualize data on both monthly presidential approval ratings and consume
   - Connect database to frontend through Flask
 
 ## Install Guide
-Our project can be installed locally by carrying out the following steps. Users may also skip installation and go straight to the website at the bottom of our Launch Codes.
+Our project can be installed locally by carrying out the following steps. Users may also skip installation and go straight to the website at the top of our Launch Codes.
 1. Clone and move into this repository
 ```
 $ git clone git@github.com:chloepwong/p04.git
 ```
 ```
-$ cd p02-GarfieldsCatHair
+$ cd p04
 ```
 2. Create a virtual environment
 ```
@@ -39,4 +39,26 @@ $ foo\Scripts\activate
 ```
 $ pip install -r requirements.txt
 ```
-## Launch Codes (TBA)
+## Launch Codes
+Our project can be launched locally by carrying out the following steps. Users may also go straight to http://159.223.128.39/.
+1. Move into this repository
+```
+$ cd p04
+```
+2. Activate the virtual environment: Linux/MacOS
+```
+$ . foo/bin/activate
+```
+2. Activate the virtual environment: Windows
+```
+$ foo\Scripts\activate
+```
+3. Move into the app directory
+```
+$ cd app
+```
+4. Run the Flask app
+```
+$ python3 __init__.py
+```
+5. Navigate to localhost: http://127.0.0.1:5000
