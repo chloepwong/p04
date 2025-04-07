@@ -113,6 +113,29 @@ def cpibase():
     else:
         print("database exists")
 
+def approvalbase():
+    if not os.path.exists('p04.db'):
+        print("wa")
+        try:
+            conn = database_connect()
+            with open('approval_polls.xls') as csvfile:
+                readn = csv.reader(csvfile)
+                cursor = conn.cursor()
+                for info in readn:
+                    Presidentx = info[0]
+                    datex = info[1]
+                    positivex = info[2]
+                    negativex = info[3]
+                    daysx = info[4]
+                    cursor.execute('INSERT INTO approval (President, date, positive, negative, days) VALUES (?, ?, ?, ?, ?)', (Presidentx, datex, positivex, negativex, daysx))
+                conn.commit()
+        except sqlite3.IntegrityError:
+            flash('Database Error')
+    else:
+        print("database exists")
+
+approvalbase()
+
 def login_user():
     username = request.form.get('username')
     password = request.form.get('password')
