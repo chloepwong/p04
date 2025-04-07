@@ -6,39 +6,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <title>Register</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-
-    <div id=top>
-        <form action="/">
-            <input id=home type="submit" name="return" value="Home">
-        </form>
-        <h1 id=title>Register</h1>
+<body class="bg-zinc-100">
+  <div class="bg-gray-300">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <form action="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white">
+                  <input id=home type="submit" name="return" value="Home">
+              </form>
+              <form action="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white">
+                  <input id=home type="submit" name="return" value="Graphs">
+              </form>
+              <form action="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white">
+                  <input id=home type="submit" name="return" value="Discussion">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-    <div id="background">
-
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <p class="flashes">{{ message }}</p>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-
-        <form action="/register" method="POST">
-            <input type="text" name="username" placeholder="New Username"><br><br>
-            <input type="password" name="password" placeholder="New Password"><br><br>
-            <input type="password" name="confirm_pass" placeholder="Confirm Password"><br><br>
-            <input type="submit" id="register" name="register" value="Register">
-        </form>
-
+  </div>
+  <div class="mt-10 mx-auto w-full max-w-sm">
+    <h1 class="text-stone-800 text-6xl font-medium tracking-wider p-6">Register</h1>
+    <form action="/register" method="POST" class="grid grid-cols-1 justify-items-center">
+      <input type="text" name="username" placeholder="New Username"><br><br>
+      <input type="password" name="password" placeholder="New Password"><br><br>
+      <input type="password" name="confirm_pass" placeholder="Confirm Password"><br><br>
+      <input type="submit" id="register" name="register" value="Register">
+    </form>
+  </div>
         <p style="color: red">{{ error_text }}</p>
     </div>
 </body>
