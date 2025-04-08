@@ -86,6 +86,19 @@ def viewDiscussion():
 def error(message):
     return render_template('error.html', error = message)
 
+@app.route("/chart")
+def show_chart():
+    conn = database_connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT date, cpi FROM cpi")
+    data = cursor.fetchall()
+    conn.close()
+
+    dates = [row[0] for row in data]
+    cpi_values = [row[1] for row in data]
+
+    return render_template("chart.html", dates=dates, cpi_values=cpi_values)
+
 # Run
 if __name__ == "__main__":
     app.debug = True
