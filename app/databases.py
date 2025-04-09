@@ -88,6 +88,17 @@ def init_db():
     conn.commit()
     conn.close()
 
+def setup(info):
+    date = info.replace("/", "-")
+    newdate = date[-4:] + "-" + date[:-5]
+    if int(newdate[5]) > 1:
+        newdate = newdate[:5] + "0" + newdate[5:]
+    if int(newdate[5]) == 1 and newdate[6] == "-":
+        newdate = newdate[:5] + "0" + newdate[5:]
+    newdate = newdate[:7]
+    return newdate
+
+
 def database_connect():
     if not os.path.exists('p04.db'):
         init_db()
@@ -110,12 +121,6 @@ def cpibase():
                 conn.commit()
         except sqlite3.IntegrityError:
             flash('Database Error')
-    else:
-        print("database exists")
-
-def approvalbase():
-    if not os.path.exists('p04.db'):
-        print("wa")
         try:
             conn = database_connect()
             with open('approval_polls.xls') as csvfile:
@@ -123,7 +128,8 @@ def approvalbase():
                 cursor = conn.cursor()
                 for info in readn:
                     Presidentx = info[0]
-                    datex = info[1]
+                    datex = setup(info[1])
+                    print(datex)
                     positivex = info[2]
                     negativex = info[3]
                     daysx = info[4]
@@ -133,31 +139,34 @@ def approvalbase():
             flash('Database Error')
     else:
         print("database exists")
+        
+cpibase()
 
-def correlationbase():
-    if not os.path.exists('p04.db'):
-        print("wa")
-        try:
-            conn = database_connect()
-            with open('approval_polls.xls') as approvalfile and open('cpiai_csv.csv') as cpifile:
-                readn = csv.reader(approvalfile)
-                readx = csv.reader(cpifile)
-                cursor = conn.cursor()
-                for info in readn:
-                    Presidenta = info[0]
-                    datea = info[1]
-                    percenta = info[2]/ (info[2] + info[3])
-                for data in readn:
-                    dateb = data[0]
-                    cpib = data[1]
-                    changeb = data[2]
-                if datea = dateb:
-                    cursor.execute('INSERT INTO correlation (date, President, cpi, change, percent) VALUES (?, ?, ?, ?, ?)', (datea, Presidenta, cpib, changeb, percenta))
-                conn.commit()
-        except sqlite3.IntegrityError:
-            flash('Database Error')
-    else:
-        print("database exists")
+
+# def correlationbase():
+#     if not os.path.exists('p04.db'):
+#         print("wa")
+#         try:
+#             conn = database_connect()
+#             with open('approval_polls.xls') as approvalfile and open('cpiai_csv.csv') as cpifile:
+#                 readn = csv.reader(approvalfile)
+#                 readx = csv.reader(cpifile)
+#                 cursor = conn.cursor()
+#                 for info in readn:
+#                     Presidenta = info[0]
+#                     datea = info[1].replace("/", "-")
+#                     percenta = info[2]/ (info[2] + info[3])
+#                 for data in readn:
+#                     dateb = data[0]
+#                     cpib = data[1]
+#                     changeb = data[2]
+#                 if datea = dateb:
+#                     cursor.execute('INSERT INTO correlation (date, President, cpi, change, percent) VALUES (?, ?, ?, ?, ?)', (datea, Presidenta, cpib, changeb, percenta))
+#                 conn.commit()
+#         except sqlite3.IntegrityError:
+#             flash('Database Error')
+#     else:
+#         print("database exists")
 
 
 def login_user():
