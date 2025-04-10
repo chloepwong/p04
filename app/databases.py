@@ -111,42 +111,71 @@ def cpibase():
         try:
             conn = database_connect()
             with open('cpiai_csv.csv') as csvfile:
-                readn = csv.reader(csvfile)
+                readn = list(csv.reader(csvfile))
                 cursor = conn.cursor()
-                for info in readn:
-                    datex = info[0]
-                    cpix = info[1]
-                    changex = info[2]
-                    cursor.execute('INSERT INTO cpi (date, cpi, change) VALUES (?, ?, ?)', (datex, cpix, changex))
+                readlen = len(readn)
+                count = 0
+                for row in readn:
+                    count +=1
+                    i = count + 1
+                    unique = 1
+                    while i < readlen:
+                        date = row[0]
+                        datex = date[:7]
+                        ls2 = readn[i]
+                        ls2 = ls2[0]
+                        ls2 = ls2[:7]
+                        if datex == ls2:
+                            unique = 0
+                            break
+                        else:
+                            i += 1
+                    if unique == 1:
+                        cpix = row[1]
+                        changex = row[2]
+                        cursor.execute('INSERT INTO cpi (date, cpi, change) VALUES (?, ?, ?)', (datex, cpix, changex))
+                        print(datex)
                 conn.commit()
         except sqlite3.IntegrityError:
             flash('Database Error')
+        print ("aprov")
         try:
             conn = database_connect()
             with open('approval_polls.xls') as csvfile:
-                readn = csv.reader(csvfile)
+                readn = list(csv.reader(csvfile))
                 cursor = conn.cursor()
-                for info in readn:
-                    Presidentx = info[0]
-                    datex = setup(info[1])
-                    print(datex)
-                    positivex = info[2]
-                    negativex = info[3]
-                    daysx = info[4]
-                    cursor.execute('INSERT INTO approval (President, date, positive, negative, days) VALUES (?, ?, ?, ?, ?)', (Presidentx, datex, positivex, negativex, daysx))
+                readlen = len(readn)
+                count = 0
+                for row in readn:
+                    count +=1
+                    i = count + 1
+                    unique = 1
+                    while i < readlen:
+                        date = row[1]
+                        datex = setup(date)
+                        ls2 = readn[i]
+                        ls2 = ls2[1]
+                        ls2 = setup(ls2)
+                        print(datex + " vs " + ls2)
+                        if datex == ls2:
+                            print("oops")
+                            unique = 0
+                            i = readlen
+                        else:
+                            i += 1
+                    if unique == 1:
+                        Presidentx = row[0]
+                        positivex = row[2]
+                        negativex = row[3]
+                        daysx = row[4]
+                        print(datex)
+                        cursor.execute('INSERT INTO approval (President, date, positive, negative, days) VALUES (?, ?, ?, ?, ?)', (Presidentx, datex, positivex, negativex, daysx))
                 conn.commit()
         except sqlite3.IntegrityError:
             flash('Database Error')
     else:
         print("database exists")
-        
-cpibase()
-
-
-# def correlationbase():
-#     if not os.path.exists('p04.db'):
-#         print("wa")
-#         try:
+#     try:
 #             conn = database_connect()
 #             with open('approval_polls.xls') as approvalfile and open('cpiai_csv.csv') as cpifile:
 #                 readn = csv.reader(approvalfile)
@@ -164,9 +193,9 @@ cpibase()
 #                     cursor.execute('INSERT INTO correlation (date, President, cpi, change, percent) VALUES (?, ?, ?, ?, ?)', (datea, Presidenta, cpib, changeb, percenta))
 #                 conn.commit()
 #         except sqlite3.IntegrityError:
-#             flash('Database Error')
-#     else:
-#         print("database exists")
+        
+cpibase()
+
 
 
 def login_user():
