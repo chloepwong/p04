@@ -1,6 +1,6 @@
 # Unbasic Jeans: Chloe Wong, Brian Liu, Raymond Lin, Kishi Wijaya
 # SoftDev
-# P04: 
+# P04:
 # 2025-XX-XX
 # Time Spent:
 
@@ -66,11 +66,11 @@ def init_db():
             date TEXT NOT NULL,
             President TEXT NOT NULL,
             cpi FLOAT NOT NULL,
-            change FLOAT NOT NULL,  
+            change FLOAT NOT NULL,
             percent FLOAT NOT NULL
         )
     ''')
-    
+
 # date -> date   president -> President  cpi -> consumer price index   change -> change in CPI from previous month   percent -> percent of positive ratings
 
 
@@ -82,7 +82,7 @@ def init_db():
         )
     ''')
 
-# username -> username   id -> COMMENT ID    comment -> comment text 
+# username -> username   id -> COMMENT ID    comment -> comment text
 
 
     conn.commit()
@@ -133,7 +133,7 @@ def approvalbase():
             flash('Database Error')
     else:
         print("database exists")
-
+'''
 def correlationbase():
     if not os.path.exists('p04.db'):
         print("wa")
@@ -158,7 +158,7 @@ def correlationbase():
             flash('Database Error')
     else:
         print("database exists")
-
+'''
 
 def login_user():
     username = request.form.get('username')
