@@ -11,15 +11,47 @@
     <title>Home</title>
 </head>
 <body class="w-screen h-screen">
-  <div class="bg-gray-300 mx-max h-16 px-2 sm:px-6 lg:px-8">
-
-  </div>
-  <div class="w-full h-full">
-    <div class="w-full h-3/5" id="main">
-
+    <div class="bg-blue-900">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            </div>
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div class="hidden sm:ml-6 sm:block">
+                <div class="flex space-x-4">
+                  <form action="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
+                      <input id=home type="submit" name="return" value="Home">
+                  </form>
+                  <form action="/charts" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
+                      <input id=home type="submit" name="return" value="Graphs">
+                  </form>
+                  <form action="/discussion" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
+                      <input id=home type="submit" name="return" value="Discussion">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-  </div>
-    <div id="background">
+    <div class="flex w-full h-3/4 items-center justify-center" id="main">
+        <div class="flex shadow-2xl w-7/8 h-3/4 items-center justify-left opacity-100">
+            <div class="w-1/6 h-3/4 m-7">
+                <h1 class="text-black text-6xl font-extrabold tracking-wider inline-block">WEBSITE TITLE</h1>
+                <p class="text-black-900 text-sm font-medium tracking-wider text-opacity-0 my-3">Brought to you by Unbasic Jeans!</p>
+                <img src="https://github.com/chloepwong/p04/blob/main/flag.jpg?raw=true" class="rounded-2xl h-16 my-3">
+            </div>
+            <div class="bg-blue-900 w-1/6 h-3/4 ml-84 rounded-2xl">
+                <h1 class="text-white text-6xl font-extrabold tracking-wider">Graphs</h1>
+                <p class="text-black text-sm font-medium tracking-wider m-3">Explore our amazing graphs on the economy and presidents!</p>
+            </div>
+            <div class="bg-blue-900 w-1/6 h-3/4 ml-10 rounded-2xl">
+                <h1 class="text-white text-6xl font-extrabold tracking-wider">Discussion</h1>
+                <p class="text-black text-sm font-medium tracking-wider m-3">Engage with other Americans and share opinions!</p>
+            </div>
+        </div>
+    </div>
+    </div>
         <br>
         {% if username %}
         <div id="name">
@@ -29,7 +61,6 @@
         {% else %}
         <div id="buttons">
             <a id=login href="{{ url_for('login') }}">Log in</a>
-            <a id=register href="{{ url_for('register') }}">Register</a><br>
         </div>
         {% endif %}
 
