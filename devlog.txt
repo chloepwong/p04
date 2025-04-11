@@ -35,6 +35,9 @@ chloeW -- 2025-4-9 22:26
 - Finished preliminary functions for discussion feature
 - Researched systemctl commands
 
+brianL -- 2025-4-10 21:23
+- Begun implementing CSS on home page and register page
+
 DESIGN REVISIONS THUS FAR (since 2025-3-31, as of 2025-4-9):
 - Truncated dates in database tables to ensure alignment between our two datasets
 - Indicated necessary data preprocessing 
