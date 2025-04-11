@@ -4,11 +4,6 @@
 # 2025-XX-XX
 # Time Spent:
 
-import sqlite3, os
-from flask import Flask, request, render_template, redirect, url_for, flash, session
-
-app = Flask(__name__)
-app.secret_key = os.urandom(32)
 
 # Setup
 import sqlite3, os, csv
@@ -109,6 +104,7 @@ def cpibase():
     if not os.path.exists('p04.db'):
         print("wa")
         try:
+            unique = 1
             conn = database_connect()
             with open('cpiai_csv.csv') as csvfile:
                 readn = list(csv.reader(csvfile))
@@ -126,10 +122,12 @@ def cpibase():
                         ls2 = ls2[0]
                         ls2 = ls2[:7]
                         if datex == ls2:
-                            unique = 0
-                            break
+                            print("oops")
+                            unique -= 1
+                            i = readlen
                         else:
                             i += 1
+                    print (unique)
                     if unique == 1:
                         cpix = row[1]
                         changex = row[2]
@@ -141,7 +139,7 @@ def cpibase():
         print ("aprov")
         try:
             conn = database_connect()
-            with open('approval_polls.xls') as csvfile:
+            with open('approval_polls.csv') as csvfile:
                 readn = list(csv.reader(csvfile))
                 cursor = conn.cursor()
                 readlen = len(readn)
@@ -159,7 +157,7 @@ def cpibase():
                         print(datex + " vs " + ls2)
                         if datex == ls2:
                             print("oops")
-                            unique = 0
+                            unique -= 1
                             i = readlen
                         else:
                             i += 1
