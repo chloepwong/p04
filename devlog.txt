@@ -30,3 +30,13 @@ chloeW, brianL -- 2025-4-4 11:01
 chloeW -- 2025-4-6 19:45
 - Fixed minor errors in install guide
 - Added launch codes
+
+chloeW -- 2025-4-9 22:26
+- Finished preliminary functions for discussion feature
+- Researched systemctl commands
+
+DESIGN REVISIONS THUS FAR (since 2025-3-31, as of 2025-4-9):
+- Truncated dates in database tables to ensure alignment between our two datasets
+- Indicated necessary data preprocessing 
+- Expanded on plan for discussion feature by adding pages to read and write comments
+====================================
