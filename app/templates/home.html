@@ -28,43 +28,54 @@
                   <form action="/discussion" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
                       <input id=home type="submit" name="return" value="Discussion">
                   </form>
+                  {% if username %}
+                  <div class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
+                      <a href="{{ url_for('logout') }}">Log out</a><br>
+                  {% endif%}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
     </div>
-    <div class="flex w-full h-3/4 items-center justify-center" id="main">
-        <div class="flex shadow-2xl w-7/8 h-3/4 items-center justify-left opacity-100">
-            <div class="w-1/6 h-3/4 m-7">
-                <h1 class="text-black text-6xl font-extrabold tracking-wider inline-block">WEBSITE TITLE</h1>
-                <p class="text-black-900 text-sm font-medium tracking-wider text-opacity-0 my-3">Brought to you by Unbasic Jeans!</p>
-                <img src="https://github.com/chloepwong/p04/blob/main/flag.jpg?raw=true" class="rounded-2xl h-16 my-3">
+    <div class="h-4/5 py-3" id="main">
+        <div class="bg-red-700 w-9/10 h-1/10 text-center mx-auto rounded-2xl">
+            {% if username %}
+            <div class="flex p-3 justify-center">
+                <p class="text-2xl font-medium text-gray-50">Hello, {{ username }} !</p>
             </div>
-            <div class="bg-blue-900 w-1/6 h-3/4 ml-84 rounded-2xl">
-                <h1 class="text-white text-6xl font-extrabold tracking-wider">Graphs</h1>
-                <p class="text-black text-sm font-medium tracking-wider m-3">Explore our amazing graphs on the economy and presidents!</p>
+            {% else %}
+            <div class="flex p-3 justify-center">
+                <p class="text-2xl font-medium text-gray-50">Log in to access more features! </p>
+                <a class="bg-gray-50 font-medium text-gray-900 w-12 mx-5 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('login') }}">
+                    <i class="my-1 arrow right"></i></a>
             </div>
-            <div class="bg-blue-900 w-1/6 h-3/4 ml-10 rounded-2xl">
-                <h1 class="text-white text-6xl font-extrabold tracking-wider">Discussion</h1>
-                <p class="text-black text-sm font-medium tracking-wider m-3">Engage with other Americans and share opinions!</p>
+            {% endif %}
+        </div>
+        <div class="flex w-full h-5/6 items-center justify-center">
+            <div class="flex shadow-2xl w-7/8 h-7/8 items-center justify-left opacity-100">
+                <div class="w-1/6 m-7">
+                    <h1 class="text-black text-6xl font-extrabold tracking-wider inline-block">WEBSITE TITLE</h1>
+                    <p class="text-black-900 text-sm font-medium tracking-wider text-opacity-0 my-3">Brought to you by Unbasic Jeans!</p>
+                    <img src="https://github.com/chloepwong/p04/blob/main/flag.jpg?raw=true" class="rounded-2xl h-16 my-3">
+                </div>
+                <div class="bg-blue-700 w-1/6 h-3/4 ml-84 rounded-2xl">
+                    <h1 class="text-white text-6xl font-extrabold tracking-wider">Graphs</h1>
+                    <p class="text-black text-sm font-medium tracking-wider m-3">Explore our amazing graphs on the economy and presidents!</p>
+                </div>
+                <div class="bg-blue-700 w-1/6 h-3/4 ml-10 rounded-2xl">
+                    <h1 class="text-white text-6xl font-extrabold tracking-wider">Discussion</h1>
+                    <p class="text-black text-sm font-medium tracking-wider m-3">Engage with other Americans and share opinions!</p>
+                </div>
             </div>
         </div>
+        <footer class="bg-gray-800 p-4 text-center sticky bottom-0">
+            <p class="text-gray-400 text-sm">&copy; 2025. All rights reserved.</p>
+         </footer>
     </div>
-    </div>
-        <br>
-        {% if username %}
-        <div id="name">
-            Hello, {{ username }} !
-            <a id="link" href="{{ url_for('logout') }}">Log out</a><br>
-        </div>
-        {% else %}
-        <div id="buttons">
-            <a id=login href="{{ url_for('login') }}">Log in</a>
-        </div>
-        {% endif %}
+</div>
 
-    </div>
 
 </body>
 
