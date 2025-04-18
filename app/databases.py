@@ -103,74 +103,41 @@ def database_connect():
 def cpibase():
     if not os.path.exists('p04.db'):
         print("wa")
-        try:
-            unique = 1
-            conn = database_connect()
-            with open('cpiai_csv.csv') as csvfile:
-                readn = list(csv.reader(csvfile))
-                cursor = conn.cursor()
-                readlen = len(readn)
-                count = 0
-                for row in readn:
-                    count +=1
-                    i = count + 1
-                    unique = 1
-                    while i < readlen:
-                        date = row[0]
-                        datex = date[:7]
-                        ls2 = readn[i]
-                        ls2 = ls2[0]
-                        ls2 = ls2[:7]
-                        if datex == ls2:
-                            print("oops")
-                            unique -= 1
-                            i = readlen
-                        else:
-                            i += 1
-                    print (unique)
-                    if unique == 1:
-                        cpix = row[1]
-                        changex = row[2]
-                        cursor.execute('INSERT INTO cpi (date, cpi, change) VALUES (?, ?, ?)', (datex, cpix, changex))
-                        print(datex)
-                conn.commit()
-        except sqlite3.IntegrityError:
-            flash('Database Error')
-        print ("aprov")
-        try:
-            conn = database_connect()
-            with open('approval_polls.csv') as csvfile:
-                readn = list(csv.reader(csvfile))
-                cursor = conn.cursor()
-                readlen = len(readn)
-                count = 0
-                for row in readn:
-                    count +=1
-                    i = count + 1
-                    unique = 1
-                    while i < readlen:
-                        date = row[1]
-                        datex = setup(date)
-                        ls2 = readn[i]
-                        ls2 = ls2[1]
-                        ls2 = setup(ls2)
-                        print(datex + " vs " + ls2)
-                        if datex == ls2:
-                            print("oops")
-                            unique -= 1
-                            i = readlen
-                        else:
-                            i += 1
-                    if unique == 1:
-                        Presidentx = row[0]
-                        positivex = row[2]
-                        negativex = row[3]
-                        daysx = row[4]
-                        print(datex)
-                        cursor.execute('INSERT INTO approval (President, date, positive, negative, days) VALUES (?, ?, ?, ?, ?)', (Presidentx, datex, positivex, negativex, daysx))
-                conn.commit()
-        except sqlite3.IntegrityError:
-            flash('Database Error')
+    try:
+        conn = database_connect()
+        cursor = conn.cursor()
+        inserted_dates = set()
+        with open('cpiai_csv.csv') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                datex = row[0][:7]
+                if datex not in inserted_dates:
+                    print(datex)
+                    inserted_dates.add(datex)
+                    cursor.execute(
+                        'INSERT INTO cpi (date, cpi, change) VALUES (?, ?, ?)',
+                        (datex, row[1], row[2])
+                    )
+        conn.commit()
+    except sqlite3.IntegrityError:
+        flash('Database Error')
+
+    try:
+        inserted_approval_dates = set()
+        with open('approval_polls.csv') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                datex = setup(row[1])
+                if datex and datex not in inserted_approval_dates:
+                    inserted_approval_dates.add(datex)
+                    print(datex)                    
+                    cursor.execute(
+                        'INSERT INTO approval (President, date, positive, negative, days) VALUES (?, ?, ?, ?, ?)',
+                        (row[0], datex, row[2], row[3], row[4])
+                    )
+        conn.commit()
+    except sqlite3.IntegrityError:
+        flash('Database Error')
     else:
         print("database exists")
 #     try:
