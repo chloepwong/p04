@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Home</title>
 </head>
-<body class="w-screen h-screen">
+<body class="w-screen h-screen bg-gray-300">
     <div class="bg-blue-900">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
@@ -39,11 +39,11 @@
           </div>
         </div>
     </div>
-    <div class="h-4/5 py-3" id="main">
+    <div class="h-9/10 py-3" id="main">
         <div class="bg-red-700 w-9/10 h-1/10 text-center mx-auto rounded-2xl">
             {% if username %}
             <div class="flex p-3 justify-center">
-                <p class="text-2xl font-medium text-gray-50">Hello, {{ username }} !</p>
+                <p class="text-2xl font-medium text-gray-50">Hello, {{ username }}!</p>
             </div>
             {% else %}
             <div class="flex p-3 justify-center">
@@ -56,17 +56,27 @@
         <div class="flex w-full h-5/6 items-center justify-center">
             <div class="flex shadow-2xl w-7/8 h-7/8 items-center justify-left opacity-100">
                 <div class="w-1/6 m-7">
-                    <h1 class="text-black text-6xl font-extrabold tracking-wider inline-block">WEBSITE TITLE</h1>
+                    <h1 class="text-black text-6xl font-extrabold tracking-wider inline-block text-shadow-lg/30">WEBSITE TITLE</h1>
                     <p class="text-black-900 text-sm font-medium tracking-wider text-opacity-0 my-3">Brought to you by Unbasic Jeans!</p>
                     <img src="https://github.com/chloepwong/p04/blob/main/flag.jpg?raw=true" class="rounded-2xl h-16 my-3">
                 </div>
-                <div class="bg-blue-700 w-1/6 h-3/4 ml-84 rounded-2xl">
-                    <h1 class="text-white text-6xl font-extrabold tracking-wider">Graphs</h1>
-                    <p class="text-black text-sm font-medium tracking-wider m-3">Explore our amazing graphs on the economy and presidents!</p>
-                </div>
-                <div class="bg-blue-700 w-1/6 h-3/4 ml-10 rounded-2xl">
-                    <h1 class="text-white text-6xl font-extrabold tracking-wider">Discussion</h1>
-                    <p class="text-black text-sm font-medium tracking-wider m-3">Engage with other Americans and share opinions!</p>
+                <div class="flex-col ml-84">
+                    <div class="bg-blue-800 w-full h-1/4 p-2 m-3 rounded-2xl">
+                        <h1 class="text-white text-6xl font-extrabold tracking-wider text-shadow-lg/40">Graphs</h1>
+                        <p class="text-white text-sm font-medium tracking-wider m-3">Explore our amazing graphs on the economy and presidents!</p>
+                        <div class="flex items-center w-full">
+                            <a class="bg-gray-50 font-medium text-gray-900 w-full px-4 mx-6 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('login') }}">
+                                <i class="my-1 arrow right"></i></a>
+                        </div>
+                    </div>
+                    <div class="bg-blue-800 w-full h-1/4 p-2 m-3 rounded-2xl">
+                        <h1 class="text-white text-6xl font-extrabold tracking-wider text-shadow-lg/40">Discussion</h1>
+                        <p class="text-white text-sm font-medium tracking-wider m-3">Engage with other Americans and share opinions!</p>
+                        <div class="flex items-center w-full">
+                            <a class="bg-gray-50 font-medium text-gray-900 w-full px-4 mx-6 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('login') }}">
+                                <i class="my-1 arrow right"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
