@@ -62,8 +62,9 @@ def discussion():
     comments = []
     #print(coms)
     for i in range(len(coms)):
-        sub = coms[i][0]
-        comments.append(sub)
+        author = coms[i][0]
+        comment = coms[i][1]
+        comments.append([author, comment])
     print(comments)
     username = session['username']
     return render_template("discussion.html", comments=comments, username=username)

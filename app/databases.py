@@ -234,6 +234,6 @@ def getComment(commentid):
 def getAllComments():
     conn = sqlite3.connect('p04.db')
     cursor = conn.cursor()
-    comments = cursor.execute("SELECT comment FROM comments").fetchall()
+    comments = cursor.execute("SELECT username, comment FROM comments ORDER BY id DESC").fetchall()
     conn.close()
     return comments
