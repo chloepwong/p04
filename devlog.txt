@@ -38,8 +38,11 @@ chloeW -- 2025-4-9 22:26
 brianL -- 2025-4-10 21:23
 - Begun implementing CSS on home page and register page
 
-brianL -- 2025-4-19 21:23
+brianL -- 2025-4-19 15:30
 - Finished CSS on home page, login page, and register page
+
+brianL -- 2025-4-19 21:21
+- Added CSS for graphs page
 
 DESIGN REVISIONS THUS FAR (since 2025-3-31, as of 2025-4-9):
 - Truncated dates in database tables to ensure alignment between our two datasets
