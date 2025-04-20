@@ -216,12 +216,24 @@ def logout_user():
     return redirect('/')
 
 def addComment(username, comment):
+    conn = sqlite3.connect('p04.db')
+    cursor = conn.cursor()
     cursor.execute("INSERT INTO comments(username, comment) VALUES(?, ?)", (username, comment))
-    db.commit()
-    return cursor.execute("SELECT id FROM comments ORDER BY id DESC LIMIT 1").fetchone()
+    conn.commit()
+    commentid = cursor.execute("SELECT id FROM comments ORDER BY id DESC LIMIT 1").fetchone()
+    conn.close()
+    return commentid
 
 def getComment(commentid):
-    return cursor.execute("SELECT comment FROM comments WHERE id=?", (commentid,)).fetchone()
+    conn = sqlite3.connect('p04.db')
+    cursor = conn.cursor()
+    comment = cursor.execute("SELECT comment FROM comments WHERE id=?", (commentid,)).fetchone()
+    conn.close()
+    return comment
 
 def getAllComments():
-    return cursor.execute("SELECT comment FROM comments").fetchall()
+    conn = sqlite3.connect('p04.db')
+    cursor = conn.cursor()
+    comments = cursor.execute("SELECT comment FROM comments").fetchall()
+    conn.close()
+    return comments

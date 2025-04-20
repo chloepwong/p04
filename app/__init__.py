@@ -68,8 +68,6 @@ def discussion():
     username = session['username']
     return render_template("discussion.html", comments=comments, username=username)
 
-from flask import request
-
 @app.route("/graphs")
 def graphs():
     conn = db.database_connect()
