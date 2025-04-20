@@ -19,15 +19,9 @@
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
-                  <form action="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
-                      <input id=home type="submit" name="return" value="Home">
-                  </form>
-                  <form action="/charts" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
-                      <input id=home type="submit" name="return" value="Graphs">
-                  </form>
-                  <form action="/discussion" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
-                      <input id=home type="submit" name="return" value="Discussion">
-                  </form>
+                  <a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">Home</a>
+                  <a href="/graphs" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">Graphs</a>
+                  <a href="/discussion" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">Discussion</a>
                   {% if username %}
                   <div class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
                       <a href="{{ url_for('logout') }}">Log out</a><br>
@@ -65,7 +59,7 @@
                         <h1 class="text-white text-6xl font-extrabold tracking-wider text-shadow-lg/40">Graphs</h1>
                         <p class="text-white text-sm font-medium tracking-wider m-3">Explore our amazing graphs on the economy and presidents!</p>
                         <div class="flex items-center w-full">
-                            <a class="bg-gray-50 font-medium text-gray-900 w-full px-4 mx-6 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('login') }}">
+                            <a class="bg-gray-50 font-medium text-gray-900 w-full px-4 mx-6 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('graphs') }}">
                                 <i class="my-1 arrow right"></i></a>
                         </div>
                     </div>
@@ -73,7 +67,7 @@
                         <h1 class="text-white text-6xl font-extrabold tracking-wider text-shadow-lg/40">Discussion</h1>
                         <p class="text-white text-sm font-medium tracking-wider m-3">Engage with other Americans and share opinions!</p>
                         <div class="flex items-center w-full">
-                            <a class="bg-gray-50 font-medium text-gray-900 w-full px-4 mx-6 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('login') }}">
+                            <a class="bg-gray-50 font-medium text-gray-900 w-full px-4 mx-6 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('discussion') }}">
                                 <i class="my-1 arrow right"></i></a>
                         </div>
                     </div>

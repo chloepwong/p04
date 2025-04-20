@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Discussion</title>
 </head>
-<body>
-    
+
+<body class="w-screen h-screen bg-gray-300">
+    <div class="bg-blue-900">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">Home</a>
+                            <a href="/graphs" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">Graphs</a>
+                            <a href="/discussion" class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">Discussion</a>
+                            {% if username %}
+                            <div class="rounded-md px-3 py-2 text-sm font-medium text-gray-50 hover:bg-red-700 hover:text-white">
+                                <a href="{{ url_for('logout') }}">Log out</a><br>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="h-9/10 py-3" id="main">
+        <div class="bg-red-700 w-9/10 h-1/10 text-center mx-auto rounded-2xl">
+            <div class="flex p-3 justify-center">
+                <p class="text-2xl font-medium text-gray-50">Hello, {{ username }}!</p>
+            </div>
+        </div>
+
+        {% if comment %}
+        <div class="flex justify-center mt-4">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
+                <h2 class="text-3xl font-semibold text-center">Comment by {{ username }}</h2>
+                <p class="text-lg mt-4">{{ comment }}</p>
+            </div>
+        </div>
+        {% elif comments %}
+        <div class="flex justify-center mt-4">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
+                <h2 class="text-3xl font-semibold text-center">Discussion</h2>
+                <div class="mt-4">
+                    {% for comment in comments %}
+                    <div class="mb-4 p-4 bg-gray-100 rounded-lg">
+                        <p class="text-lg">{{ comment }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="flex justify-center mt-4">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
+                <h2 class="text-3xl font-semibold text-center">No comments yet</h2>
+                <p class="text-lg mt-4 text-center">Be the first to leave a comment!</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer class="bg-gray-800 p-4 text-center sticky bottom-0">
+        <p class="text-gray-400 text-sm">&copy; 2025. All rights reserved.</p>
+    </footer>
+
 </body>
+
 </html>
