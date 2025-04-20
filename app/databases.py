@@ -13,6 +13,9 @@ from flask import Flask, request, render_template, redirect, url_for, flash, ses
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
+db = sqlite3.connect("p04.db", check_same_thread=False)
+cursor = db.cursor()
+
 # database initialization
 def init_db():
     """initialize db if none exists"""
@@ -163,6 +166,7 @@ def login_user():
             if users_pass[0] == password:
                 session['username'] = username
                 flash('Successfully logged in.')
+                print(session)
                 return redirect('/')
         else:
             flash('Invalid username or password.')
@@ -195,4 +199,16 @@ def create_user():
 def logout_user():
     flash('Successfully logged out.')
     session.pop('username',)
+    print("Logged out")
     return redirect('/')
+
+def addComment(username, comment):
+    cursor.execute("INSERT INTO comments(username, comment) VALUES(?, ?)", (username, comment))
+    db.commit()
+    return cursor.execute("SELECT id FROM comments ORDER BY id DESC LIMIT 1").fetchone()
+
+def getComment(commentid):
+    return cursor.execute("SELECT comment FROM comments WHERE id=?", (commentid,)).fetchone()
+
+def getAllComments():
+    return cursor.execute("SELECT comment FROM comments").fetchall()

@@ -1,0 +1,11 @@
+.main{
+    background-image: url("https://static.vecteezy.com/system/resources/previews/022/506/507/non_2x/happy-presidents-day-concept-with-the-us-national-flag-against-a-collage-american-presidents-portraits-free-photo.jpg");
+    background-color: rgba(255,255,255,0.4);
+    background-blend-mode: lighten;
+}
+
+.login-image{
+    background-image: url("https://www.westmont.edu/sites/default/files/styles/16_9_900w/public/Presidents-Flag-Horiz2.jpg?itok=ds1tteda");
+    background-size: contain;
+
+}

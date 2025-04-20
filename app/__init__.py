@@ -41,11 +41,6 @@ def logout():
         return db.logout_user()
     return redirect('/')
 
-# Graphs
-@app.route('/graphs')
-def graphs():
-    return render_template('graphs.html')
-
 # Write discussion comment
 @app.route("/write", methods=['GET', 'POST'])
 def write():
@@ -54,50 +49,60 @@ def write():
     if request.method=="POST":
         comment = request.form.get("comment")
         commentid = db.addComment(session.get("username"), comment)[0]
-        return redirect("/comment/" + str(commentid))
-    username = session.get("username")
-    return render_template("write.html", username=username)
-
-# View specific comment
-@app.route("/discussion/<commentid>")
-def viewComment(commentid):
-    if session.get("username") == None:
-        return redirect(url_for("login"))
-    comment = db.getComment(commentid)[0]
-    username = db.getAuthor(commentid)[0]
-    return render_template("discussion.html", comment=comment, username=username)
+        return redirect("/discussion")
+    return render_template("write.html", username = session.get("username"))
 
 # View full discussion
-@app.route("/disccusion")
-def viewDiscussion():
+@app.route("/discussion")
+def discussion():
+    print(session)
     if session.get("username") == None:
         return redirect(url_for("login"))
     coms = db.getAllComments()
     comments = []
     #print(coms)
     for i in range(len(coms)):
-        sub = [coms[i][0] , "/discussion/" + str(coms[i][1])]
+        sub = coms[i][0]
         comments.append(sub)
-    #print(comments)
-    return render_template("discussion.html", comments=comments)
+    print(comments)
+    username = session['username']
+    return render_template("discussion.html", comments=comments, username=username)
 
-# Error page
-@app.route('/error')
-def error(message):
-    return render_template('error.html', error = message)
+from flask import request
 
-@app.route("/chart")
-def show_chart():
-    conn = database_connect()
+@app.route("/graphs")
+def graphs():
+    conn = db.database_connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT date, cpi FROM cpi")
-    data = cursor.fetchall()
+    
+    cursor.execute("SELECT date, cpi FROM cpi WHERE date >= '2000'")
+    cpi_data = cursor.fetchall()
+    
+    cursor.execute("SELECT date, positive, negative FROM approval WHERE date >= '2000'")
+    approval_data = cursor.fetchall()
+    
     conn.close()
+    
+    dates = []
+    cpi_values = []
+    for row in cpi_data:
+        dates.append(row[0])
+        cpi_values.append(row[1])
 
-    dates = [row[0] for row in data]
-    cpi_values = [row[1] for row in data]
+    ratings = {}
+    for row in approval_data:
+        date = row[0]
+        pos = float(row[1])
+        neg = float(row[2])
+        approval = (pos / (pos + neg)) * 100
+        ratings[date] = approval
+    
+    approval_values = []
+    for date in dates:
+        value = ratings.get(date)
+        approval_values.append(value)
 
-    return render_template("chart.html", dates=dates, cpi_values=cpi_values)
+    return render_template("graphs.html", dates=dates, cpi_values=cpi_values, approval_values=approval_values)
 
 # Run
 if __name__ == "__main__":
