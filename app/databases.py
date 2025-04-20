@@ -13,8 +13,8 @@ from flask import Flask, request, render_template, redirect, url_for, flash, ses
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
-db = sqlite3.connect("p04.db", check_same_thread=False)
-cursor = db.cursor()
+# db = sqlite3.connect("p04.db", check_same_thread=False)
+# cursor = db.cursor()
 
 # database initialization
 def init_db():
@@ -96,10 +96,10 @@ def setup(info):
     newdate = newdate[:7]
     return newdate
 
-
+if not os.path.exists('p04.db'):
+    init_db()
+    
 def database_connect():
-    if not os.path.exists('p04.db'):
-        init_db()
     conn = sqlite3.connect('p04.db')
     return conn
 
@@ -110,6 +110,7 @@ def cpibase():
         conn = database_connect()
         cursor = conn.cursor()
         inserted_dates = set()
+        cpi_list = []
         with open('cpiai_csv.csv') as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
@@ -121,12 +122,14 @@ def cpibase():
                         'INSERT INTO cpi (date, cpi, change) VALUES (?, ?, ?)',
                         (datex, row[1], row[2])
                     )
+                    cpi_list.append([datex, row[1], row[2]])
         conn.commit()
     except sqlite3.IntegrityError:
         flash('Database Error')
 
     try:
         inserted_approval_dates = set()
+        approval_list = []
         with open('approval_polls.csv') as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
@@ -138,12 +141,24 @@ def cpibase():
                         'INSERT INTO approval (President, date, positive, negative, days) VALUES (?, ?, ?, ?, ?)',
                         (row[0], datex, row[2], row[3], row[4])
                     )
+                    approval_list.append([row[0], datex, row[2], row[3], row[4]])
         conn.commit()
     except sqlite3.IntegrityError:
         flash('Database Error')
     else:
         print("database exists")
-
+    try:
+        for c in cpi_list:
+            for a in approval_list:
+                if c[0] == a[1]:
+                    cursor.execute(
+                        'INSERT INTO correlation (date, President, cpi, change, percent) VALUES (?, ?, ?, ?, ?)',
+                        (c[0], a[0], c[1], c[2], (float(a[2])/(float(a[2]) + float(a[3]))))
+                    )
+        conn.commit()
+    except sqlite3.IntegrityError:
+        flash('Database Error')
+                
         
 cpibase()
 
