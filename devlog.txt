@@ -41,6 +41,10 @@ brianL -- 2025-4-10 21:23
 brianL -- 2025-4-19 15:30
 - Finished CSS on home page, login page, and register page
 
+chloeW -- 2025-4-19 20:37
+- Wrapped up discussion feature
+- Added line graphs to depict selected data on inflation and presidential approval ratings
+
 brianL -- 2025-4-19 21:21
 - Added CSS for graphs page
 
