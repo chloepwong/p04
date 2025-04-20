@@ -140,24 +140,7 @@ def cpibase():
         flash('Database Error')
     else:
         print("database exists")
-#     try:
-#             conn = database_connect()
-#             with open('approval_polls.xls') as approvalfile and open('cpiai_csv.csv') as cpifile:
-#                 readn = csv.reader(approvalfile)
-#                 readx = csv.reader(cpifile)
-#                 cursor = conn.cursor()
-#                 for info in readn:
-#                     Presidenta = info[0]
-#                     datea = info[1].replace("/", "-")
-#                     percenta = info[2]/ (info[2] + info[3])
-#                 for data in readn:
-#                     dateb = data[0]
-#                     cpib = data[1]
-#                     changeb = data[2]
-#                 if datea = dateb:
-#                     cursor.execute('INSERT INTO correlation (date, President, cpi, change, percent) VALUES (?, ?, ?, ?, ?)', (datea, Presidenta, cpib, changeb, percenta))
-#                 conn.commit()
-#         except sqlite3.IntegrityError:
+
         
 cpibase()
 
