@@ -102,7 +102,7 @@ def graphs():
         value = ratings.get(date)
         approval_values.append(value)
 
-    return render_template("graphs.html", dates=dates, cpi_values=cpi_values, approval_values=approval_values)
+    return render_template("graphs.html", dates=dates, cpi_values=cpi_values, approval_values=approval_values, username = session.get("username"))
 
 # Run
 if __name__ == "__main__":
