@@ -34,13 +34,13 @@
         </div>
     </div>
     <div class="h-9/10 py-3" id="main">
-        <div class="bg-red-700 w-9/10 h-1/10 text-center mx-auto rounded-2xl">
+        <div class="flex bg-red-700 w-9/10 h-1/10 text-center align-middle justify-center mx-auto rounded-2xl">
             {% if username %}
             <div class="flex p-3 justify-center">
                 <p class="text-2xl font-medium text-gray-50">Hello, {{ username }}!</p>
             </div>
             {% else %}
-            <div class="flex p-3 justify-center">
+            <div class="flex justify-center items-center">
                 <p class="text-2xl font-medium text-gray-50">Log in to access more features! </p>
                 <a class="bg-gray-50 font-medium text-gray-900 w-12 mx-5 rounded-lg text-center text-2xl hover:bg-gray-300" href="{{ url_for('login') }}">
                     <i class="my-1 arrow right"></i></a>
@@ -54,7 +54,7 @@
                     <p class="text-black-900 text-sm font-medium tracking-wider text-opacity-0 my-3">Brought to you by Unbasic Jeans!</p>
                     <img src="https://github.com/chloepwong/p04/blob/main/flag.jpg?raw=true" class="rounded-2xl h-16 my-3">
                 </div>
-                <div class="flex-col ml-84">
+                <div class="flex-col ml-128">
                     <div class="bg-blue-800 w-full h-1/4 p-2 m-3 rounded-2xl">
                         <h1 class="text-white text-6xl font-extrabold tracking-wider text-shadow-lg/40">Graphs</h1>
                         <p class="text-white text-sm font-medium tracking-wider m-3">Explore our amazing graphs on the economy and presidents!</p>
