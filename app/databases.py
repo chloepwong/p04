@@ -153,7 +153,7 @@ def cpibase():
                 if c[0] == a[1]:
                     cursor.execute(
                         'INSERT INTO correlation (date, President, cpi, change, percent) VALUES (?, ?, ?, ?, ?)',
-                        (c[0], a[0], c[1], c[2], int((float(a[2])/(float(a[2]) + float(a[3])))))
+                        (c[0], a[0], c[1], c[2], (float(a[2])/(float(a[2]) + float(a[3]))))
                     )
         conn.commit()
     except sqlite3.IntegrityError:
