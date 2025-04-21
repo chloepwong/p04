@@ -41,6 +41,9 @@ brianL -- 2025-4-10 21:23
 brianL -- 2025-4-19 15:30
 - Finished CSS on home page, login page, and register page
 
+kishiW -- 2025-4-19 18:51
+- Fixed database for CPI and Approval
+
 chloeW -- 2025-4-19 20:37
 - Wrapped up discussion feature
 - Added line graphs to depict selected data on inflation and presidential approval ratings
@@ -52,6 +55,9 @@ chloeW -- 2025-4-20 1:54
 - Fixed minor bugs
 - Added text to graphs page to guide users' interpretations of data
 - Displayed authors of comments on discussion page
+
+kishiW -- 2025-4-19 18:51
+- Created database for correlation
 
 DESIGN REVISIONS THUS FAR (since 2025-3-31, as of 2025-4-9):
 - Truncated dates in database tables to ensure alignment between our two datasets
