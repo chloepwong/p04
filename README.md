@@ -3,6 +3,12 @@
 We will visualize data on both monthly presidential approval ratings and consumer price indices in the United States to look for an enduring correlation between the two. Users will have access to a detailed, overlapping timeline of presidential approval ratings and consumer price indices, as well as brief explanations of how the data can be interpreted. Users will also be able to indicate their preferences for specific presidents or time ranges, which will determine the information they see on their home and graphs pages. We hope that this will inform users about the effects that the economy has on presidential approval ratings. We think this is especially important for devos who are newly or soon-to-be eighteen years old so that they can be cognizant about the factors influencing their voting behavior. Our site would also have a discussion board, where users can post their opinions about the data and interact with other users. 
 
 ## Feature Spotlight
+- Discussion section where you can make comments about the graphs
+- Two graphs you can zoom in and out of
+- Each individual data point on the graph is shown if you hover over it with your mouse
+- Magnifying glass to zoom in on certain sections of the graph
+- Hand button to move the graph
+- You can download the graphs in SVG, PNG, and CSV
 
 ## Known Bugs/Issues
 - No known bugs/issues on our website
