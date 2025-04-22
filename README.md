@@ -5,6 +5,7 @@ We will visualize data on both monthly presidential approval ratings and consume
 ## Feature Spotlight
 
 ## Known Bugs/Issues
+- No known bugs/issues on our website
 
 ## Roster & Roles
 - Chloe Wong (PM) - Flask App
