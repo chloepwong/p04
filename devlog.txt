@@ -59,6 +59,11 @@ chloeW -- 2025-4-20 1:54
 kishiW -- 2025-4-19 18:51
 - Created database for correlation
 
+chloeW -- 2025-4-21 20:48
+- Fixed issue with graphs not appearing
+- Reordered comments on discussion page
+- Added users and comments to database
+
 DESIGN REVISIONS THUS FAR (since 2025-3-31, as of 2025-4-9):
 - Truncated dates in database tables to ensure alignment between our two datasets
 - Indicated necessary data preprocessing 
