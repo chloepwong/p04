@@ -38,6 +38,9 @@ chloeW -- 2025-4-9 22:26
 brianL -- 2025-4-10 21:23
 - Begun implementing CSS on home page and register page
 
+raymondL -- 2025-4-11 20:17
+- Worked on flask app pertaining to graphs
+
 brianL -- 2025-4-19 15:30
 - Finished CSS on home page, login page, and register page
 
@@ -51,13 +54,23 @@ chloeW -- 2025-4-19 20:37
 brianL -- 2025-4-19 21:21
 - Added CSS for graphs page
 
+raymondL -- 2025-4-19 22:01
+- Design doc edits
+
 chloeW -- 2025-4-20 1:54
 - Fixed minor bugs
 - Added text to graphs page to guide users' interpretations of data
 - Displayed authors of comments on discussion page
 
+raymondL -- 2025-4-20 17:13
+- Changed graphs design
+
 kishiW -- 2025-4-19 18:51
 - Created database for correlation
+
+raymondL -- 2025-4-21 20:43
+- Changed discussions CSS
+- Edited the graphs/database
 
 chloeW -- 2025-4-21 20:48
 - Fixed issue with graphs not appearing
