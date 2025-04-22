@@ -1,6 +1,6 @@
-# TBD by UnbasicJeans
+# Smart Decisions by UnbasicJeans
 ## Description
-We will visualize data on both monthly presidential approval ratings and consumer price indices in the United States to look for an enduring correlation between the two. Users will have access to a detailed, overlapping timeline of presidential approval ratings and consumer price indices, as well as brief explanations of how the data can be interpreted. Users will also be able to indicate their preferences for specific presidents or time ranges, which will determine the information they see on their home and graphs pages. We hope that this will inform users about the effects that the economy has on presidential approval ratings. We think this is especially important for devos who are newly or soon-to-be eighteen years old so that they can be cognizant about the factors influencing their voting behavior. Our site would also have a discussion board, where users can post their opinions about the data and interact with other users. 
+We will visualize data on both monthly presidential approval ratings and consumer price indices in the United States to look for an enduring correlation between the two. Users will have access to detailed, overlapping timelines of presidential approval ratings and consumer price indices, as well as brief explanations of how the data can be interpreted. We hope that this will inform users about the effects that the economy has on presidential approval ratings. We think this is especially important for devos who are newly or soon-to-be eighteen years old so that they can be cognizant about the factors influencing their voting behavior. Our site would also have a discussion board, where users can post their opinions about the data and interact with other users. 
 
 ## Feature Spotlight
 - Discussion section where you can make comments about the graphs
@@ -11,7 +11,7 @@ We will visualize data on both monthly presidential approval ratings and consume
 - You can download the graphs in SVG, PNG, and CSV
 
 ## Known Bugs/Issues
-- No known bugs/issues on our website
+- No known bugs/issues in our website
 
 ## Roster & Roles
 - Chloe Wong (PM) - Flask App
