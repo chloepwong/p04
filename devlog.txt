@@ -82,3 +82,11 @@ DESIGN REVISIONS THUS FAR (since 2025-3-31, as of 2025-4-9):
 - Indicated necessary data preprocessing 
 - Expanded on plan for discussion feature by adding pages to read and write comments
 ====================================
+
+HOME STRETCH CHECKLIST:
+------------------------------------
+* Make sure graphs appear properly :: Chloe, Kishi
+* Add background image for all pages :: Brian
+* Come up with a project title/website name :: Everyone
+* Prepare to record video :: Everyone
+====================================
