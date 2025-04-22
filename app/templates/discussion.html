@@ -43,21 +43,14 @@
             </div>
         </div>
 
-        {% if comment %}
-        <div class="flex justify-center mt-4">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
-                <h2 class="text-3xl font-semibold text-center">Comment by {{ username }}</h2>
-                <p class="text-lg mt-4">{{ comment }}</p>
-            </div>
-        </div>
-        {% elif comments %}
+        {% if comments %}
         <div class="flex justify-center mt-4">
             <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
                 <h2 class="text-3xl font-semibold text-center">Discussion</h2>
                 <div class="mt-4">
                     {% for comment in comments %}
                     <div class="mb-4 p-4 bg-gray-100 rounded-lg">
-                        <p class="text-lg">{{ comment }}</p>
+                        <p class="text-lg"><b>{{ comment[0] }}:</b> {{ comment[1] }}</p>
                     </div>
                     {% endfor %}
                     <a href="/write" class="text-blue-500 font-medium text-center block mt-2">Write a comment</a>
@@ -68,7 +61,7 @@
         <div class="flex justify-center mt-4">
             <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
                 <h2 class="text-3xl font-semibold text-center">No comments yet</h2>
-                <p class="text-lg mt-4 text-center">Be the first to leave a comment!</p>
+                <a href="/write" class="text-lg mt-4 text-center text-blue-500 block">Be the first to write a comment!</a>
             </div>
         </div>
         {% endif %}
