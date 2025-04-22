@@ -159,11 +159,9 @@ def cpibase():
     except sqlite3.IntegrityError:
         flash('Database Error')           
         
-<<<<<<< HEAD
-cpibase()
-=======
-#cpibase()
->>>>>>> 743170985b5846eb705581624711a1e55c1110fc
+
+# cpibase()
+
 
 def login_user():
     username = request.form.get('username')
