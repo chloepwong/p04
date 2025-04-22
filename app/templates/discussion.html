@@ -10,6 +10,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Discussion</title>
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        a:hover {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .comment-card {
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .comment-card:hover {
+            transform: scale(1.02);
+            background-color: #f3f4f6;
+        }
+
+        .glow-title {
+            text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .username-banner {
+            background: linear-gradient(90deg, #dc2626, #b91c1c);
+            box-shadow: 0 4px 14px rgba(220, 38, 38, 0.3);
+        }
+
+        footer {
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body class="w-screen h-screen bg-gray-300">
@@ -37,7 +68,7 @@
     </div>
 
     <div class="h-9/10 py-3" id="main">
-        <div class="bg-red-700 w-9/10 h-1/10 text-center mx-auto rounded-2xl">
+        <div class="username-banner w-9/10 h-1/10 text-center mx-auto rounded-2xl">
             <div class="flex p-3 justify-center">
                 <p class="text-2xl font-medium text-gray-50">Hello, {{ username }}!</p>
             </div>
@@ -46,22 +77,22 @@
         {% if comments %}
         <div class="flex justify-center mt-4">
             <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
-                <h2 class="text-3xl font-semibold text-center">Discussion</h2>
+                <h2 class="text-3xl font-semibold text-center glow-title">Discussion</h2>
                 <div class="mt-4">
                     {% for comment in comments %}
-                    <div class="mb-4 p-4 bg-gray-100 rounded-lg">
+                    <div class="mb-4 p-4 bg-gray-100 rounded-lg comment-card">
                         <p class="text-lg"><b>{{ comment[0] }}:</b> {{ comment[1] }}</p>
                     </div>
                     {% endfor %}
-                    <a href="/write" class="text-blue-500 font-medium text-center block mt-2">Write a comment</a>
+                    <a href="/write" class="text-blue-500 font-medium text-center block mt-2 hover:underline">Write a comment</a>
                 </div>
             </div>
         </div>
         {% else %}
         <div class="flex justify-center mt-4">
             <div class="bg-white p-6 rounded-lg shadow-lg w-3/4">
-                <h2 class="text-3xl font-semibold text-center">No comments yet</h2>
-                <a href="/write" class="text-lg mt-4 text-center text-blue-500 block">Be the first to write a comment!</a>
+                <h2 class="text-3xl font-semibold text-center glow-title">No comments yet</h2>
+                <a href="/write" class="text-lg mt-4 text-center text-blue-500 block hover:underline">Be the first to write a comment!</a>
             </div>
         </div>
         {% endif %}
