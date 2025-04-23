@@ -77,6 +77,11 @@ chloeW -- 2025-4-21 20:48
 - Reordered comments on discussion page
 - Added users and comments to database
 
+chloeW, brianL, kishiW, raymondL -- 2025-4-22 21:08
+- Rehearsed presentation and recorded video
+- Updated design doc to only include implemented features
+- Uploaded and submitted video
+
 DESIGN REVISIONS THUS FAR (since 2025-3-31, as of 2025-4-9):
 - Truncated dates in database tables to ensure alignment between our two datasets
 - Indicated necessary data preprocessing 
