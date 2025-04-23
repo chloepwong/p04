@@ -77,6 +77,10 @@ chloeW -- 2025-4-21 20:48
 - Reordered comments on discussion page
 - Added users and comments to database
 
+raymondL -- 2025-4-22 11:05
+- Updated README
+- Edited the website
+
 chloeW, brianL, kishiW, raymondL -- 2025-4-22 21:08
 - Rehearsed presentation and recorded video
 - Updated design doc to only include implemented features
